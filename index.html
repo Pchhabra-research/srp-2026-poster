@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Companion page for the SRP 2026 poster Same Symptoms, Different Stories.">
+<title>Same Symptoms, Different Stories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=Fira+Sans:wght@400;500;600;700&family=Fira+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (~720px) with a sticky section bar; poster palette (navy / teal / crimson) carried over so the page reads as the poster's companion */
+:root{
+  --bg:#f5f7fb; --surface:#ffffff; --ink:#152238; --muted:#55627a; --rule:#dde3ee;
+  --navy:#1f3f7a; --teal:#136a73; --crimson:#c43249; --teal-soft:#e2f1f2; --crimson-soft:#f9e6e9; --navy-soft:#e6ecf7;
+  --f-display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-body:"Fira Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"Fira Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1622; --surface:#16202f; --ink:#e7ecf4; --muted:#9aa8bd; --rule:#2a3648;
+  --navy:#8fb0ec; --teal:#4fb3bc; --crimson:#f06a80; --teal-soft:#16353a; --crimson-soft:#3a1c24; --navy-soft:#1c2a42; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1622; --surface:#16202f; --ink:#e7ecf4; --muted:#9aa8bd; --rule:#2a3648;
+  --navy:#8fb0ec; --teal:#4fb3bc; --crimson:#f06a80; --teal-soft:#16353a; --crimson-soft:#3a1c24; --navy-soft:#1c2a42; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-inline:18px;padding-block:28px 64px;display:flex;flex-direction:column;gap:44px}
+header.top{display:flex;flex-direction:column;gap:10px;padding-top:8px}
+.eyebrow{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--f-display);font-weight:650;font-size:clamp(30px,6vw,42px);line-height:1.12;margin:0;text-wrap:balance;color:var(--navy)}
+.sub{font-family:var(--f-display);font-weight:500;font-size:clamp(17px,3.2vw,20px);line-height:1.4;margin:0;color:var(--ink);text-wrap:balance}
+.authors{font-size:14px;color:var(--muted);margin:4px 0 0}
+nav.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);margin-inline:-18px;padding:8px 18px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav.bar a{flex:none;font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:999px}
+nav.bar a:hover,nav.bar a:focus-visible{background:var(--navy-soft);color:var(--navy);outline:none}
+section{display:flex;flex-direction:column;gap:14px;scroll-margin-top:64px}
+h2{font-family:var(--f-display);font-weight:650;font-size:25px;line-height:1.2;margin:0;color:var(--navy);text-wrap:balance}
+h3{font-size:16.5px;font-weight:600;margin:6px 0 0}
+p{margin:0;max-width:68ch}
+.lead{font-size:18px}
+.finding{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:14px 0;border-top:1px solid var(--rule)}
+.finding:last-child{border-bottom:1px solid var(--rule)}
+.finding .n{font-family:var(--f-mono);font-size:13px;color:var(--muted);padding-top:3px}
+.finding p{min-width:0}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;padding:1px 9px;border-radius:999px;vertical-align:1px}
+.pill.ns{background:var(--teal-soft);color:var(--teal)} .pill.s{background:var(--crimson-soft);color:var(--crimson)}
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.g{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.g b{font-family:var(--f-display);font-size:28px;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.g span{font-size:14px;color:var(--muted);line-height:1.35}
+@media (max-width:520px){.groups{grid-template-columns:1fr}}
+dl.measures{display:grid;grid-template-columns:minmax(120px,max-content) 1fr;gap:8px 18px;margin:0}
+dl.measures dt{font-weight:600}
+dl.measures dd{margin:0;min-width:0;color:var(--ink)}
+@media (max-width:520px){dl.measures{grid-template-columns:1fr;gap:2px}dl.measures dd{margin-bottom:10px}}
+.figure{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px 16px 14px;display:flex;flex-direction:column;gap:10px}
+.figure .cap{font-size:14px;color:var(--muted)}
+.figure .cap b{color:var(--ink);font-weight:600}
+.chart{width:100%;overflow-x:auto}
+.chart svg{display:block;width:100%;height:auto;min-width:320px}
+.legend{display:flex;gap:16px;font-size:14px;flex-wrap:wrap}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{font-weight:600;}
+th:not(:first-child){text-align:right}
+th{font-size:13px;color:var(--muted);background:var(--navy-soft)}
+tr:last-child td{border-bottom:none}
+td.num{text-align:right;font-family:var(--f-mono);font-size:13.5px}
+td.sig{font-weight:600}
+.ns-c{color:var(--teal)} .s-c{color:var(--crimson)}
+ol.refs{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+ol.refs li{padding-left:4px;min-width:0;overflow-wrap:anywhere}
+ol.refs a{color:var(--navy)}
+ul.plain{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:68ch}
+.contact{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:12px 14px}
+.contact code{font-family:var(--f-mono);font-size:15px;user-select:all}
+button{font:inherit;font-size:14px;font-weight:500;color:var(--navy);background:var(--navy-soft);border:1px solid transparent;border-radius:8px;padding:5px 12px;cursor:pointer}
+button:hover{border-color:var(--navy)} button:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+svg text{font-family:var(--f-body)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;padding:6px 9px;border-radius:6px;opacity:0;transition:opacity .12s;max-width:240px;z-index:10}
+@media (prefers-reduced-motion:reduce){.tip{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">SRP 2026 · Poster companion</span>
+    <h1>Same Symptoms, Different Stories</h1>
+    <p class="sub">Differential relations of suicidal ideation and childhood maltreatment to psychopathology among sexual and gender minority youth</p>
+    <p class="authors">Peehu Chhabra, Alexa M. Rivas, Kaitlin A. Shannon, Angela Karanja, Kaesyn Price, Kathryn Eve Lewandowski, Zachary B. Millman · Division of Psychotic Disorders, McLean Hospital / Harvard Medical School</p>
+  </header>
+
+  <nav class="bar" aria-label="Sections">
+    <a href="#findings">Key findings</a><a href="#methods">Methods</a><a href="#results">Results</a><a href="#limits">Limitations</a><a href="#references">References</a><a href="#contact">Contact</a>
+  </nav>
+
+  <section id="findings">
+    <h2>Key findings</h2>
+    <p class="lead">Symptoms that usually travel with suicidal ideation did not do so for sexual and gender minority (SGM) youth in this sample. Childhood maltreatment told more of their story.</p>
+    <div>
+      <div class="finding"><span class="n">1</span><p><span class="pill s">SGM</span> youth endorsed suicidal ideation at more than twice the rate of <span class="pill ns">non-SGM</span> youth: 44.0% vs 19.5%.</p></div>
+      <div class="finding"><span class="n">2</span><p>In non-SGM youth, suicidal ideation correlated with anxiety and psychosis-risk symptoms (both r = .68). In SGM youth, neither association was present.</p></div>
+      <div class="finding"><span class="n">3</span><p>In SGM youth, childhood maltreatment correlated with anxiety (r = .71) and depression (r = .55). In non-SGM youth, it did not.</p></div>
+      <div class="finding"><span class="n">4</span><p>SGM status significantly moderated three of the four associations tested.</p></div>
+    </div>
+  </section>
+
+  <section id="methods">
+    <h2>Methods</h2>
+    <h3>Participants</h3>
+    <p>N = 66 youth aged 14–29 from a transdiagnostic sample.</p>
+    <div class="groups">
+      <div class="g"><b>21</b><span>Healthy controls</span></div>
+      <div class="g"><b>27</b><span>Clinical high-risk for psychosis, including 3 meeting SIPS criteria for a psychotic syndrome</span></div>
+      <div class="g"><b>18</b><span>Depressive disorder</span></div>
+    </div>
+    <h3>Identity groups</h3>
+    <p><b>SGM (n = 25)</b> was defined as self-identifying as a sexual minority (any orientation other than heterosexual) and/or a gender minority (transgender, nonbinary, or another gender identity). All others formed the <b>non-SGM</b> group (n = 41).</p>
+    <h3>Measures</h3>
+    <dl class="measures">
+      <dt>Depression</dt><dd>Beck Depression Inventory-II (BDI-II), total score</dd>
+      <dt>Suicidal ideation</dt><dd>BDI-II item 9; any score above 0 counted as endorsed</dd>
+      <dt>Anxiety</dt><dd>Beck Anxiety Inventory (BAI), total score</dd>
+      <dt>Psychosis-risk</dt><dd>Prodromal Questionnaire–Brief (PQ-B), total items endorsed</dd>
+      <dt>Maltreatment</dt><dd>Childhood Trauma Questionnaire (CTQ), total score</dd>
+    </dl>
+    <h3>Analyses</h3>
+    <p>SI rates were compared with a chi-square test. Pearson correlations were run separately in each group and compared with Fisher z-tests. Every association that differed by group was then tested as an SGM × predictor interaction in linear regression.</p>
+  </section>
+
+  <section id="results">
+    <h2>Results</h2>
+
+    <div class="figure">
+      <div class="cap"><b>Figure 1.</b> Suicidal ideation was more frequently endorsed by SGM youth.</div>
+      <div class="chart" id="fig1" role="img" aria-label="Bar chart: suicidal ideation endorsed by 19.5% of non-SGM youth (8 of 41) and 44.0% of SGM youth (11 of 25)."></div>
+      <div class="cap">χ²(1, N = 66) = 4.54, p = .033, OR = 3.24. Non-SGM 8 of 41; SGM 11 of 25.</div>
+    </div>
+
+    <div class="figure">
+      <div class="cap"><b>Figure 2.</b> Associations with suicidal ideation and maltreatment differed by identity group. Hover or tap a dot for details.</div>
+      <div class="legend"><span><i style="background:var(--teal)"></i>non-SGM</span><span><i style="background:var(--crimson)"></i>SGM</span></div>
+      <div class="chart" id="fig2" role="img" aria-label="Dumbbell chart of correlations by group for four associations."></div>
+    </div>
+
+    <h3>Correlations by group</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Association</th><th>non-SGM r (n)</th><th>SGM r (n)</th><th>Fisher z</th><th>p</th></tr></thead>
+      <tbody id="corrRows"></tbody>
+    </table></div>
+
+    <h3>SGM × predictor interactions</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Predictor → Outcome</th><th>b (interaction)</th><th>SE</th><th>p</th></tr></thead>
+      <tbody>
+        <tr><td>Maltreatment → Depression</td><td class="num sig">1.28</td><td class="num">0.43</td><td class="num sig">.004</td></tr>
+        <tr><td>Maltreatment → Anxiety</td><td class="num">0.66</td><td class="num">0.37</td><td class="num">.076</td></tr>
+        <tr><td>SI → Anxiety</td><td class="num sig">−20.64</td><td class="num">5.78</td><td class="num sig">&lt; .001</td></tr>
+        <tr><td>SI → Psychosis-risk</td><td class="num sig">−7.79</td><td class="num">2.25</td><td class="num sig">&lt; .001</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Linear regression, outcome ~ predictor × SGM. Positive b means a stronger positive association in SGM youth; negative b means a weaker one.</p>
+  </section>
+
+  <section id="limits">
+    <h2>Limitations</h2>
+    <ul class="plain">
+      <li>Small sample, especially within the SGM group (n = 25), limits power and precision.</li>
+      <li>SGM status was unevenly distributed across diagnostic groups (2 of 21 healthy controls vs 14 of 27 CHR and 9 of 18 depression), so group differences may partly reflect clinical status.</li>
+      <li>Cross-sectional design; associations are not causal.</li>
+      <li>Suicidal ideation came from a single self-report item.</li>
+    </ul>
+  </section>
+
+  <section id="references">
+    <h2>References</h2>
+    <ol class="refs">
+      <li>Beck, A. T., Epstein, N., Brown, G., &amp; Steer, R. A. (1988). An inventory for measuring clinical anxiety: Psychometric properties. <i>Journal of Consulting and Clinical Psychology, 56</i>(6), 893–897. <a href="https://doi.org/10.1037/0022-006X.56.6.893">https://doi.org/10.1037/0022-006X.56.6.893</a></li>
+      <li>Beck, A. T., Steer, R. A., &amp; Brown, G. K. (1996). <i>Manual for the Beck Depression Inventory-II.</i> Psychological Corporation.</li>
+      <li>Bernstein, D. P., Stein, J. A., Newcomb, M. D., Walker, E., Pogge, D., Ahluvalia, T., Stokes, J., Handelsman, L., Medrano, M., Desmond, D., &amp; Zule, W. (2003). Development and validation of a brief screening version of the Childhood Trauma Questionnaire. <i>Child Abuse &amp; Neglect, 27</i>(2), 169–190. <a href="https://doi.org/10.1016/S0145-2134(02)00541-0">https://doi.org/10.1016/S0145-2134(02)00541-0</a></li>
+      <li>Haas, A. P., Eliason, M., Mays, V. M., Mathy, R. M., Cochran, S. D., D'Augelli, A. R., … Clayton, P. J. (2011). Suicide and suicide risk in lesbian, gay, bisexual, and transgender populations: Review and recommendations. <i>Journal of Homosexuality, 58</i>(1), 10–51. <a href="https://doi.org/10.1080/00918369.2011.534038">https://doi.org/10.1080/00918369.2011.534038</a></li>
+      <li>Loewy, R. L., Pearson, R., Vinogradov, S., Bearden, C. E., &amp; Cannon, T. D. (2011). Psychosis risk screening with the Prodromal Questionnaire–Brief Version (PQ-B). <i>Schizophrenia Research, 129</i>(1), 42–46. <a href="https://doi.org/10.1016/j.schres.2011.03.029">https://doi.org/10.1016/j.schres.2011.03.029</a></li>
+      <li>Meyer, I. H. (2003). Prejudice, social stress, and mental health in lesbian, gay, and bisexual populations: Conceptual issues and research evidence. <i>Psychological Bulletin, 129</i>(5), 674–697. <a href="https://doi.org/10.1037/0033-2909.129.5.674">https://doi.org/10.1037/0033-2909.129.5.674</a></li>
+      <li>Miller, T. J., McGlashan, T. H., Rosen, J. L., Cadenhead, K., Cannon, T., Ventura, J., McFarlane, W., Perkins, D. O., Pearlson, G. D., &amp; Woods, S. W. (2003). Prodromal assessment with the Structured Interview for Prodromal Syndromes and the Scale of Prodromal Symptoms: Predictive validity, interrater reliability, and training to reliability. <i>Schizophrenia Bulletin, 29</i>(4), 703–715. <a href="https://doi.org/10.1093/oxfordjournals.schbul.a007040">https://doi.org/10.1093/oxfordjournals.schbul.a007040</a></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact"><span>Peehu Chhabra</span><code id="email">pchhabra@bwh.harvard.edu</code><button id="copyEmail" type="button">Copy email</button></div>
+  </section>
+
+  <footer>Results are group-level summaries; no individual participant data are shown. Society for Research in Psychopathology, 2026.</footer>
+</div>
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  function txt(p,x,y,s,a){var t=el('text',Object.assign({x:x,y:y},a||{}),p);t.textContent=s;return t}
+  var tip=document.getElementById('tip');
+  function show(e,html){tip.innerHTML=html;tip.style.opacity=1;var x=(e.clientX||0)+12,y=(e.clientY||0)+12;tip.style.left=Math.min(x,innerWidth-250)+'px';tip.style.top=y+'px'}
+  function hide(){tip.style.opacity=0}
+  function fr(r){var s=Math.abs(r).toFixed(2).replace(/^0/,'');return (r<0?'−':'')+s}
+
+  // Figure 1
+  var W=560,H=300,m={l:46,r:16,t:58,b:36},ih=H-m.t-m.b,iw=W-m.l-m.r;
+  var s=el('svg',{viewBox:'0 0 '+W+' '+H},document.getElementById('fig1'));
+  var y=function(v){return m.t+ih-(v/50)*ih};
+  [0,10,20,30,40,50].forEach(function(v){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--rule)'},s);txt(s,m.l-8,y(v)+4,v,{'text-anchor':'end','font-size':12,fill:'var(--muted)'})});
+  var bars=[{k:'non-SGM',v:19.5,c:'var(--teal)',n:'8 of 41'},{k:'SGM',v:44.0,c:'var(--crimson)',n:'11 of 25'}];
+  var bw=iw*0.22,cx=[m.l+iw*0.3,m.l+iw*0.72];
+  bars.forEach(function(b,i){
+    var r=el('rect',{x:cx[i]-bw/2,y:y(b.v),width:bw,height:y(0)-y(b.v),fill:b.c,rx:2},s);
+    r.addEventListener('pointermove',function(e){show(e,'<b>'+b.k+'</b>: '+b.v.toFixed(1)+'% ('+b.n+')')});r.addEventListener('pointerleave',hide);
+    txt(s,cx[i],y(b.v)-8,b.v.toFixed(1)+'%',{'text-anchor':'middle','font-size':15,'font-weight':700,fill:'var(--ink)'});
+    txt(s,cx[i],H-12,b.k,{'text-anchor':'middle','font-size':14,fill:'var(--ink)'});
+  });
+  var by=y(53);el('path',{d:'M'+cx[0]+' '+(by+7)+'V'+by+'H'+cx[1]+'V'+(by+7),fill:'none',stroke:'var(--ink)','stroke-width':1.4},s);
+  txt(s,(cx[0]+cx[1])/2,by-6,'* p = .033',{'text-anchor':'middle','font-size':13,fill:'var(--ink)'});
+  txt(s,14,m.t+ih/2,'Endorsed SI (%)',{'text-anchor':'middle','font-size':12,fill:'var(--muted)',transform:'rotate(-90 14 '+(m.t+ih/2)+')'});
+
+  // Figure 2 + correlation table
+  var rows=[
+    {lab:'SI – Anxiety',a:[.68,41,'< .001'],b:[.06,25,'.790'],z:2.87,p:'.004'},
+    {lab:'SI – Psychosis-risk',a:[.68,40,'< .001'],b:[-.05,25,'.803'],z:3.27,p:'.001'},
+    {lab:'Maltreatment – Anxiety',a:[.06,39,'.726'],b:[.71,24,'< .001'],z:-2.99,p:'.003'},
+    {lab:'Maltreatment – Depression',a:[-.26,39,'.116'],b:[.55,24,'.006'],z:-3.18,p:'.001'}];
+  var W2=640,H2=290,L=206,R=18,T=18,B=40,rowh=(H2-T-B)/rows.length;
+  var s2=el('svg',{viewBox:'0 0 '+W2+' '+H2},document.getElementById('fig2'));
+  var x=function(v){return L+(v+0.4)/1.2*(W2-L-R)};
+  [-0.4,-0.2,0,0.2,0.4,0.6,0.8].forEach(function(v){el('line',{x1:x(v),x2:x(v),y1:T,y2:H2-B,stroke:v===0?'var(--muted)':'var(--rule)','stroke-width':v===0?1.2:1},s2);txt(s2,x(v),H2-B+18,(v<0?'−':'')+Math.abs(v).toFixed(1),{'text-anchor':'middle','font-size':12,fill:'var(--muted)'})});
+  txt(s2,x(0.2),H2-4,'Correlation (r)',{'text-anchor':'middle','font-size':13,fill:'var(--ink)'});
+  var tb=document.getElementById('corrRows');
+  rows.forEach(function(r,i){
+    var cy=T+rowh*(i+0.5);
+    txt(s2,L-12,cy+4,r.lab,{'text-anchor':'end','font-size':13,fill:'var(--ink)'});
+    el('line',{x1:x(r.a[0]),x2:x(r.b[0]),y1:cy,y2:cy,stroke:'var(--muted)','stroke-width':4,'stroke-opacity':.55},s2);
+    [[r.a,'var(--teal)','non-SGM'],[r.b,'var(--crimson)','SGM']].forEach(function(d){
+      var c=el('circle',{cx:x(d[0][0]),cy:cy,r:9,fill:d[1],tabindex:0},s2);
+      txt(s2,x(d[0][0]),cy-14,fr(d[0][0]),{'text-anchor':'middle','font-size':13,'font-weight':700,fill:d[1]});
+      var h='<b>'+r.lab+'</b><br>'+d[2]+': r = '+fr(d[0][0])+', n = '+d[0][1]+', p '+(d[0][2][0]==='<'?d[0][2]:'= '+d[0][2])+'<br>Group difference: z = '+r.z.toFixed(2)+', p = '+r.p;
+      c.addEventListener('pointermove',function(e){show(e,h)});c.addEventListener('pointerleave',hide);
+      c.addEventListener('focus',function(){var b=c.getBoundingClientRect();show({clientX:b.right,clientY:b.bottom},h)});c.addEventListener('blur',hide);
+    });
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+r.lab+'</td><td class="num ns-c">'+fr(r.a[0])+' ('+r.a[1]+')</td><td class="num s-c">'+fr(r.b[0])+' ('+r.b[1]+')</td><td class="num">'+r.z.toFixed(2).replace('-','−')+'</td><td class="num sig">'+r.p+'</td>';
+    tb.appendChild(tr);
+  });
+
+  var btn=document.getElementById('copyEmail');
+  btn.addEventListener('click',function(){
+    var t=document.getElementById('email').textContent;
+    var done=function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1600)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var sel=getSelection();sel.removeAllRanges();sel.addRange(r);btn.textContent='Selected, press copy'};
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+
+</body>
+</html>
